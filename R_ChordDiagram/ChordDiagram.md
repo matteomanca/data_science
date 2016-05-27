@@ -54,8 +54,5 @@ In this specific example we imagine to have a dataframe containing data about so
 createChordDiagram(inputFile = 'chord_data.csv', outputFilePlot = 'chord_plot.pdf')
 ```
 
-```
-## NULL
-```
 
 ![](ChordDiagram_files/figure-html/unnamed-chunk-4-1.png)
