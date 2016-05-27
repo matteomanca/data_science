@@ -7,7 +7,7 @@ In this specific example we imagine to have a dataframe containing data about so
 
 
 
-#### The dataset is stored in a csv file and has the following format:
+#### The dataset is stored in a csv file ("chord_data.csv") and has the following format:
 
 ```
 ##           from               to      value
