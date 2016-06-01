@@ -1,0 +1,51 @@
+
+Function to create heatmap
+```{r}
+createHeatMap <- function(df){
+  library("RColorBrewer") 
+  aggregated_data <- aggregate(timestamp ~ date + districtname + day, df, FUN=length)
+  head(aggregated_data)
+  dim(aggregated_data)
+  
+  matr_df <- reshape(aggregated_data, idvar = c("day","date"), timevar="districtname", direction="wide") #TODO rimettere
+  head(matr_df)
+  dim(matr_df)
+  
+  matr_df <- matr_df[order(matr_df$date),]
+  head(matr_df)
+  
+  # install.packages('proxy') 
+  library('proxy') # Library of similarity/dissimilarity measures for 'dist()'
+  mdist <- as.matrix(dist(matr_df[,3:12], method="cosine", diag = TRUE) )
+  
+  names <- as.vector(paste(matr_df$date,matr_df$day))
+  dim(mdist)
+  colnames(mdist) <- names
+  rownames(mdist) <- names
+  
+  msim <- 1 - mdist
+  
+  # install.packages("d3heatmap")
+  library(d3heatmap)
+  
+  my_palette <- colorRampPalette(brewer.pal(9,"Blues"))(10)
+  
+  library(htmlwidgets)
+  # REMEBEER THAT THSIS IS A DISTANCE MATRIX
+  hm <- d3heatmap(log(msim), dendrogram = "none",
+                  col = my_palette , breaks=breaks)
+  saveWidget(hm, "hm.html")
+  hm
+}
+
+```
+
+
+### Read dataset and create heatmap
+
+The resulting heatmap contains the similarities between each pair of items (days in this example)
+```{r}
+  data = read.csv("heat_test_data.csv")
+  head(data)
+  createHeatMap(data)
+```
