@@ -1,7 +1,8 @@
 ---
-output: 
-  html_document: 
+output:
+  html_document:
     keep_md: yes
+  pdf_document: default
 ---
 
 Function to create heatmap
@@ -54,3 +55,6 @@ The resulting heatmap contains the similarities between each pair of items (days
   head(data)
   createHeatMap(data)
 ```
+
+![heatmap](heatmap.png?raw=false)
+
