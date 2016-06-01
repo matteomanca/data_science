@@ -1,14 +1,17 @@
+
+
+##### r2cartodb: a function to import data to your CartoDB account.  
+##### SOURCE: https://rpubs.com/walkerke/r2cartodb
+
+Set your working directory before calling the function.  
+Also, the function depends on the rgdal and httr packages, and requires that you have Rtools installed 
+(and that you have Rtools in your PATH if you are on Windows) if you want to upload spatial
+data frames.  
+
+
 ```{r}
 library(jsonlite)
-# SOURCE:
-  #https://rpubs.com/walkerke/r2cartodb
 
-### r2cartodb: a function to import data to your CartoDB account.  
-
-# Set your working directory before calling the function.  
-# Also, the function depends on the rgdal and httr packages, and requires that you have Rtools installed 
-# (and that you have Rtools in your PATH if you are on Windows) if you want to upload spatial
-# data frames.  
 
 library(rgdal)
 library(httr)
@@ -70,7 +73,7 @@ r2cartodb <- function(obj, layer_name, account_id, api_key) {
 
 ```
 
-### Load R dataset to cartoDB 
+##### Load R dataset to cartoDB 
 ```{r}
 library(DT)
 
