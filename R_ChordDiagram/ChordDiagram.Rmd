@@ -1,0 +1,55 @@
+---
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+# Chord diagram
+
+This script generates a Chord diagram, i.e., a diagram that shows relationship among a group of items (or migration data).
+
+In this specific example we imagine to have a dataframe containing data about some transictions among Barcelona districts.
+
+```{r eval=TRUE, echo=FALSE}
+#  setwd("/Users/matteo.manca/Dropbox/Sync/Research-Projects/dataviz/ChordDiagram")
+```
+
+#### The dataset is stored in a csv file and has the following format:
+```{r eval=TRUE, echo=FALSE}
+  input_data =  read.csv(file = "chord_data.csv", header = T, sep = ',')
+  head(input_data)
+```
+
+#### Function to generate the diagram
+```{r eval=TRUE}
+  createChordDiagram <- function (inputFile, outputFilePlot){ #, outputFileData
+  
+    library(circlize)
+    library(plyr)
+    set.seed(999)
+    
+    migration_file <- inputFile
+    migration <- read.csv(migration_file, sep = ',', header = TRUE)
+    
+    head(migration)
+    
+    g = chordDiagram(migration) 
+    print(g)
+    
+    pdf(outputFilePlot) # save in pdf
+    
+    g = chordDiagram(migration) 
+    print(g)
+    
+    circos.clear()
+    dev.off()
+}
+
+```
+
+
+#### Create diagram and save it in the chord_plot.pdf file
+
+```{r eval=TRUE}
+createChordDiagram(inputFile = 'chord_data.csv', outputFilePlot = 'chord_plot.pdf')
+```
