@@ -6,7 +6,7 @@ library(RColorBrewer)
 library(dplyr)
 
 
-summary = read.csv("/Users/matteo.manca/Dropbox/Sync/Research-Projects/Projects/Eurecat/urbaning/DATASETS-COMPLETE-PROCESSED/tweets_2015_bcn-complete.csv", header = F)
+summary = read.csv("tweets_2015_bcn-complete.csv", header = F)
 
 dim(summary)
 head(summary)
