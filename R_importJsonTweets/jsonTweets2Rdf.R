@@ -1,6 +1,5 @@
 ## Original script by Ujjwal Karn: (https://github.com/ujjwalkarn/DataSciencePython/blob/master/Twitter-Data-Analysis/json2tweets.R)
 
-setwd("/Users/matteo.manca/Dropbox/Sync/Research-Projects/Projects/Eurecat/TEST/bcnMaps/OLD")
 
 library(jsonlite)
 options(encoding = "UTF-8")
