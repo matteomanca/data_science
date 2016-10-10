@@ -5,7 +5,6 @@ runApp(
   
   list(ui = (fluidPage(
     headerPanel("Heatmap"),
-    # sidebarPanel( width=2),
     mainPanel(
       chartOutput("baseMap", "leaflet"),
       tags$style('.leaflet {height: 800px; width:900px;}'),
@@ -28,16 +27,13 @@ runApp(
     
     output$heatMap <- renderUI({
       
-      ## changed to use data.table for speed
-      # bcn_dat <- bcn[(lat != ""), .(count = .N), by=.(lat, lon)]
       
       bcn_dat <- bcn[,c("lat","long","tweets")]
       bcn_dat <- bcn_dat[complete.cases(bcn_dat),]
       head(bcn_dat)
       
-      ## there's a blank in there somewhere
       
-      ## I was having issues with toJSON, so I'm creating my own JSON
+      ## create JSON
       j <- paste0("[",bcn_dat[, "lat"], ",", bcn_dat[,"long"], ",", bcn_dat[,"tweets"], "]", collapse=",")
       j <- paste0("[",j,"]")
       
