@@ -1,0 +1,56 @@
+---
+title: "test"
+author: Matteo Manca
+output: 
+  ioslides_presentation: 
+    incremental: yes
+    keep_md: yes
+    smaller: yes
+    transition: slower
+---
+
+## R Markdown
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Slide with R Code and Output
+
+```{r, echo=FALSE}
+library(plotly)
+```
+
+## Slide with R Code and Output
+
+```{r, plotly=TRUE}
+
+set.seed(100)
+d <- diamonds[sample(nrow(diamonds), 1000), ]
+head(d)
+p <- ggplot(data = d, aes(x = carat, y = price)) +
+  geom_point(aes(text = paste("Clarity:", clarity)), size = 2) +
+  geom_smooth(aes(colour = cut, fill = cut)) + facet_wrap(~ cut)
+
+gg <- ggplotly(p)
+
+```
+
+## Slide with R Code and Output
+
+```{r, plotly=TRUE}
+gg
+```
+
+## Slide with Plot
+
+```{r}
+
+```
+
